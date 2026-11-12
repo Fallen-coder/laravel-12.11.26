@@ -86,8 +86,9 @@ public function decreaseQuantity(Product $product)
             'message' => $e->getMessage(),
         ], 422);
     }
+
+}
     public function what() {
         return view('products.what');
     }
-}
 }
