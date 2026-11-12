@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Tag;
 
 class ProductController extends Controller
 {
+
+
+
     public function index() {
         $products = Product::all();
         return view('products.index', compact('products'));
@@ -31,8 +35,10 @@ class ProductController extends Controller
     }
 
     public function show(Product $product) {
-        return view('products.show', compact('product'));
-    }
+    $product->load('tags');
+    $allTags = Tag::all();
+    return view('products.show', compact('product', 'allTags'));
+}
 
     public function destroy(Product $product) {
         $product->delete();
@@ -53,10 +59,23 @@ class ProductController extends Controller
         ]);
 
         $product->update($validated);
-        return redirect()
-                ->route('products.show', [$product])
-                ->with('message', "Product updated successfully");
+        if ($request->has('tags_submitted')) {
+        $names = collect(explode(',', $request->input('tags', '')))
+            ->map(fn ($name) => trim($name))
+            ->filter()
+            ->unique();
+
+        $tagIds = [];
+        foreach ($names as $name) {
+            $tagIds[] = Tag::firstOrCreate(['name' => $name])->id;
+        }
+        $product->tags()->sync($tagIds);
     }
+
+    return redirect()
+            ->route('products.show', [$product])
+            ->with('message', "Product updated successfully");
+}
 
 public function increaseQuantity(Product $product)
 {
@@ -91,4 +110,5 @@ public function decreaseQuantity(Product $product)
     public function what() {
         return view('products.what');
     }
+    
 }
