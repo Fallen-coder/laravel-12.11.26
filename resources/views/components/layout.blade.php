@@ -25,7 +25,7 @@
         </main>
 
         <footer>
-            &copy; Ventspils Tehnikums 2025
+            &copy; Ventspils Tehnikums no Hable spenial
         </footer>
     </div>
 </body>
