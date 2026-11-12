@@ -20,3 +20,4 @@ Route::post('/products/{product}/increase',
 Route::post('/products/{product}/decrease',
     [ProductController::class, 'decreaseQuantity'])
     ->name('products.decrease');
+Route::get('/products/what', [ProductController::class, 'what'])->name('products.what');
