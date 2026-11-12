@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,4 +45,4 @@
             why.innerHTML = n;
         }
     </script>
-</x-layout>
+</body>
