@@ -33,7 +33,7 @@
 
     <label for="tags">Tags (atdali ar komatiem)</label>
     <input type="text" id="tags" name="tags" list="tag-options"
-           value="{{ $product->tags->pluck('
+           value="{{ $product->tags->pluck('name')->implode(', ') }}">
     <datalist id="tag-options">
         @foreach ($allTags as $tag)
             <option value="{{ $tag->name }}">
