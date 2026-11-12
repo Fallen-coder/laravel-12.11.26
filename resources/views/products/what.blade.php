@@ -46,5 +46,4 @@
             why.innerHTML = n;
         }
     </script>
-</body>
-</html>
+</x-layout>
