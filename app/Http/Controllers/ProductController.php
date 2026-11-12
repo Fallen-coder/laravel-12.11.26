@@ -73,4 +73,7 @@ class ProductController extends Controller
                     ->withErrors(['amount' => 'Not enough stock to decrease quantity.']);
         }
     }
+    public function what() {
+        return view('products.what');
+    }
 }
