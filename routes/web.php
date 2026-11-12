@@ -14,3 +14,12 @@ Route::delete('/products/{product}', [ProductController::class, 'destroy'])->nam
 Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
 Route::get('/tags/search', [TagController::class, 'search']);
+
+Route::post('/products/{product}/increase',
+    [ProductController::class, 'increaseQuantity'])
+    ->name('products.increase');
+
+Route::post('/products/{product}/decrease',
+    [ProductController::class, 'decreaseQuantity'])
+    ->name('products.decrease');
+Route::get('/products/what', [ProductController::class, 'what'])->name('products.what');
