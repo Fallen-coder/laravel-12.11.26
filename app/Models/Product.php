@@ -15,6 +15,10 @@ class Product extends Model
         'description',
         'amount'
     ];
+    public function tags()
+{
+    return $this->belongsToMany(Tag::class);
+}
     public function changeQuantity(int $amount): void
     {
         $newQuantity = $this->quantity + $amount;

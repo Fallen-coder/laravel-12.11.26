@@ -1,12 +1,4 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+<x-layout>
     <h1>why</h1>
     <button id="btn">why?</button>
     <p id="why">0</p>
@@ -24,5 +16,4 @@
             why.innerHTML = i;
         }
     </script>
-</body>
-</html>
+</x-layout>
