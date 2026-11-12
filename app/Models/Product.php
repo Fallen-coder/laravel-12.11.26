@@ -13,5 +13,18 @@ class Product extends Model
         'name',
         'quantity',
         'description',
+        'amount'
     ];
+    public function changeQuantity(int $amount): void
+    {
+        $newQuantity = $this->quantity + $amount;
+
+        if ($newQuantity < 0) {
+            throw new \Exception('Produkta daudzums nevar būt mazāks par 0!');
+        }
+
+        $this->update([
+            'quantity' => $newQuantity
+        ]);
+    }
 }
